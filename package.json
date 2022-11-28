@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "cookie": "^0.5.0",
+    "formidable": "^2.0.1",
+    "mysql2": "^2.3.3",
+    "qs": "^6.11.0"
+  }
+}
