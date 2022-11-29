@@ -3,14 +3,34 @@ const qs = require("qs");
 const getTeamplates = require("../Handler/FileSystem");
 const CookieAndSession = require("./Session.controller.js");
 const AuthController = require("./Auth.controller.js");
+const Money = require("../model/wallets.js");
 class SiteController {
   async showHomePage(req, res) {
     let isLogin = CookieAndSession.checkingSession(req, res);
+    console.log(isLogin);
     if (isLogin) {
       fs.readFile("./view/base.html", "utf-8", async (err, data) => {
         if (err) throw err;
+        let dataWallets = await Money.showWallets(isLogin[0]);
+        console.log(dataWallets);
         res.writeHead(200, { "content-type": "text/html" });
         data = data.replace("{user}", isLogin[1]);
+        let html = "";
+        dataWallets.forEach((element, index) => {
+          html += `<div class="col shadow-sm p-3 mb-5 bg-body rounded">
+                        <div class="row">
+                            <div class="col-4 m-auto">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <div class="col-8">
+                                <h4>${element.name}</h4>
+                                <h5>${element.totalMoney}</h5>
+                                <a href="/detail">Detail</a>
+                            </div>
+                        </div>
+                    </div>`;
+        });
+        data = data.replace(" {listWallets}", html);
         res.write(data);
         res.end();
       });

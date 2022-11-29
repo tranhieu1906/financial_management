@@ -105,12 +105,13 @@
         </div>
 
     </header>
-    <main >
+    <main>
         <div class="container">
             <h2 class="fw-bold">Wallets</h2>
             <div class="container ">
                 <div class="row gap-4">
-                    <div class="col shadow-sm p-3 mb-5 bg-body rounded">
+                    {listWallets}
+                    <!-- <div class="col shadow-sm p-3 mb-5 bg-body rounded">
                         <div class="row">
                             <div class="col-4 m-auto">
                                 <i class="fa-solid fa-wallet"></i>
@@ -121,19 +122,37 @@
                                 <a href="/detail">Detail</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
                     <div class="col shadow-sm p-3 mb-5 bg-body rounded">
-                        Column
-                    </div>
-                    <div class="col shadow-sm p-3 mb-5 bg-body rounded">
-                        Column
-                    </div>
-                    <div class="col shadow-sm p-3 mb-5 bg-body rounded">
-                        <div>
-                            <a href="add-wallet">
-                                <p class="text-center text-success">Add New Wallet</p>
-                            </a>
+                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Tạo ví mới</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Tên ví</p>
+                                        <input type="text" class="form-control" placeholder="Nhập tên ví của bạn">
+                                        <p>Số dư khởi đầu</p>
+                                        <input type="text" class="form-control" placeholder="0.00">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                                            data-bs-toggle="modal">Tạo ví</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Add
+                            New Wallet</a>
+
+                        <!-- <a href="/add-wallet">
+                                    <p class="text-center text-success">Add New Wallet</p>
+                                </a> -->
                     </div>
                 </div>
             </div>

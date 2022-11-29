@@ -1,8 +1,8 @@
 const db = require("./DBconnect");
 
 class Wallets {
-  async showWallets() {
-    let sql = "SELECT * FROM Wallets";
+  async showWallets(id) {
+    let sql = `SELECT * FROM Wallets where userId = ${id}`;
     return await db
       .runMySQL(sql)
       .then((result) => {
@@ -13,4 +13,4 @@ class Wallets {
       });
   }
 }
-module.exports = Wallets;
+module.exports = new Wallets();
