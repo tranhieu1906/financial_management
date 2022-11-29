@@ -31,7 +31,7 @@ class Wallets {
         return result;
       })
       .catch((err) => {
-        throw err
+        throw err;
       });
   }
   async updateWallet(data, id) {
@@ -42,7 +42,18 @@ class Wallets {
         return result;
       })
       .catch((err) => {
-        throw err
+        throw err;
+      });
+  }
+  async deleteWallet(id) {
+    let sql = `DELETE FROM Wallets WHERE id = ${id}`;
+    return await db
+      .runMySQL(sql)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        throw err;
       });
   }
 }

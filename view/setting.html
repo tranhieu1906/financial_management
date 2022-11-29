@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body style="background-color :#f4f7fa;">
     <header class="shadow-sm p-3 mb-5 bg-body rounded d-flex justify-content-between">
         <div>
             <svg width="141.75" height="36" viewBox="0 0 126 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -104,31 +104,35 @@
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Xóa ví
                 </button>
+            </form>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa Ví</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa ví không? Bạn sẽ mất tất cả các giao dịch, ngân sách và
+                            thông tin tổng quan bên trong ví
+                            này.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="{delete}">
+                                <button type="button" class="btn btn-danger">
+                                    Xóa ví
+                                </button>
+                            </a>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa Ví</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa ví không? Bạn sẽ mất tất cả các giao dịch, ngân sách và
-                                thông tin tổng quan bên trong ví
-                                này.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-danger">Xóa ví</button>
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-            </form>
+
         </div>
     </main>
     <footer>
