@@ -6,7 +6,6 @@ class CookieAndSession {
     try {
       let sessionName = Date.now();
       let dataSession = [...data, sessionName];
-      console.log(dataSession);
       fs.writeFile(
         "src/session/" + sessionName + ".txt",
         JSON.stringify(dataSession),

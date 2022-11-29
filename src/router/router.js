@@ -4,9 +4,11 @@ const fs = require("fs");
 const PATH = "/Users/hoa/MD3-case/Case_demo/view";
 const SiteController = require("../controllers/Site.controller");
 const AuthController = require("../controllers/Auth.controller");
+const WalletsController = require("../controllers/Wallets.controller");
 function router(req, res, next) {
   let parseUrl = url.parse(req.url);
   let path = parseUrl.path;
+  let query = qs.parse(parseUrl.query);
   let mimeTypes = {
     webp: "image/webp",
     jpg: "images/jpg",
@@ -28,6 +30,7 @@ function router(req, res, next) {
     res.writeHead(200, { "Content-Type": extension });
     fs.createReadStream(PATH + req.url).pipe(res);
   } else {
+    console.log();
     switch (path) {
       case "/":
         SiteController.showHomePage(req, res);
@@ -44,9 +47,7 @@ function router(req, res, next) {
       case "/register":
         if (req.method === "GET") {
           SiteController.RegisterPage(req, res);
-          console.log(234)
         } else {
-          console.log(123123)
           AuthController.RegisterController(req, res);
         }
         break;
@@ -62,6 +63,19 @@ function router(req, res, next) {
           SiteController.ChangeInfo(req, res);
         } else {
           AuthController.ChangeInfo(req, res);
+        }
+        break;
+      case "/create_wallet":
+        WalletsController.createWallet(req, res);
+        break;
+      case `/detail?id=${query.id}`:
+        WalletsController.detail(req, res, query.id);
+        break;
+      case `/setting?id=${query.id}`:
+        if(req.method === "GET"){
+          WalletsController.Setting(req, res,query);
+        }else{
+          WalletsController.updateSetting(req, res, query)
         }
         break;
       default:

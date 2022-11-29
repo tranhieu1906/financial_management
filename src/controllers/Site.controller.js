@@ -7,12 +7,10 @@ const Money = require("../model/wallets.js");
 class SiteController {
   async showHomePage(req, res) {
     let isLogin = CookieAndSession.checkingSession(req, res);
-    console.log(isLogin);
     if (isLogin) {
       fs.readFile("./view/base.html", "utf-8", async (err, data) => {
         if (err) throw err;
         let dataWallets = await Money.showWallets(isLogin[0]);
-        console.log(dataWallets);
         res.writeHead(200, { "content-type": "text/html" });
         data = data.replace("{user}", isLogin[1]);
         let html = "";
@@ -25,7 +23,7 @@ class SiteController {
                             <div class="col-8">
                                 <h4>${element.name}</h4>
                                 <h5>${element.totalMoney}</h5>
-                                <a href="/detail">Detail</a>
+                                <a href="/detail?id=${element.id}">Detail</a>
                             </div>
                         </div>
                     </div>`;
