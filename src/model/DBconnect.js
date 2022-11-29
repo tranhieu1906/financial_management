@@ -5,7 +5,7 @@ class DBconnect {
     this.connection = mysql.createConnection({
       host: "127.0.0.1",
       user: "root",
-      password: "12345678",
+      password: "thienma1",
       database: "Wallets",
       charset: "utf8_general_ci"
     });
