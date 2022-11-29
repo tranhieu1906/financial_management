@@ -7,20 +7,20 @@ class DBconnect {
       user: "root",
       password: "12345678",
       database: "Wallets",
-      charset: "utf8_general_ci",
+      charset: "utf8_general_ci"
     });
   }
-  async runMySQL(sql){
-    return new Promise((resolve, reject)=>{
-        this.connection.query(sql, (err,result,fields)=>{
-            if(err){
-                reject(err);
-            }else{
-                resolve(result);
-            }
-        })
-    })
+  async runMySQL(sql) {
+    return new Promise((resolve, reject) => {
+      this.connection.query(sql, (err, result, fields) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
   }
 }
 
-module.exports = new DBconnect()
+module.exports = new DBconnect();

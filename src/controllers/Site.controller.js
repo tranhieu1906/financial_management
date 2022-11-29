@@ -1,8 +1,8 @@
 const fs = require("fs");
 const qs = require("qs");
 const getTeamplates = require("../Handler/FileSystem");
-const CookieAndSession = require("./Session.controller");
-const AuthController = require("./Auth.controller");
+const CookieAndSession = require("./Session.controller.js");
+const AuthController = require("./Auth.controller.js");
 class SiteController {
   async showHomePage(req, res) {
     let isLogin = CookieAndSession.checkingSession(req, res);
@@ -27,7 +27,7 @@ class SiteController {
       res.writeHead(301, { Location: "/" });
       res.end();
     } else {
-      let data = await getTeamplates.readTemplate("./view/login.html");
+      let data = await getTeamplates.readTemplate("./view/home.html");
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
       res.end();

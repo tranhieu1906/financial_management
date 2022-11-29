@@ -3,7 +3,7 @@ const qs = require("qs");
 const cookie = require("cookie");
 const getTeamplates = require("../Handler/FileSystem");
 const User = require("../model/User");
-const CookieAndSession = require("./Session.controller");
+const CookieAndSession = require("./Session.controller.js");
 class AuthController {
   LoginController(req, res) {
     let data = "";
@@ -15,9 +15,10 @@ class AuthController {
       let userData = await User.getListUsers();
       for (let i = 0; i < userData.length; i++) {
         if (
-          userData[i].phone == newData.name &&
+          userData[i].nameUser == newData.name &&
           userData[i].passwordUser == newData.password
         ) {
+          console.log(123)
           let dataSql = [
             userData[i].userId,
             userData[i].nameUser,
@@ -106,7 +107,7 @@ class AuthController {
       let inputForm = qs.parse(data);
       const idUser = await CookieAndSession.checkingSession(req)[0];
       User.UpdateUser(inputForm, idUser);
-      res.writeHead(301, { "Location" : "/" });
+      res.writeHead(301, { Location: "/" });
       res.end();
     });
     req.on("error", (err) => {

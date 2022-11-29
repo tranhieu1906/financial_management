@@ -44,7 +44,9 @@ function router(req, res, next) {
       case "/register":
         if (req.method === "GET") {
           SiteController.RegisterPage(req, res);
+          console.log(234)
         } else {
+          console.log(123123)
           AuthController.RegisterController(req, res);
         }
         break;
