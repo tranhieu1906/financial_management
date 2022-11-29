@@ -5,6 +5,7 @@ const CookieAndSession = require("./Session.controller.js");
 const AuthController = require("./Auth.controller.js");
 const Wallets = require("../model/wallets");
 const Money = require("../model/wallets.js");
+const { log } = require("console");
 
 class WalletsController {
   createWallet(req, res) {
@@ -43,6 +44,8 @@ class WalletsController {
     let data = await getTeamplates.readTemplate("./view/setting.html");
     let dataWallets = await Money.showWallets(isLogin[0]);
     data = data.replace("{user}", isLogin[1]);
+    console.log(query.id);
+    data = data.replace("{delete}", `/delete?id=${query.id}`);
     if ((dataWallets.id = query)) {
       data = data.replace("{nameWallet}", dataWallets[0].name);
       data = data.replace("{moneyWallet}", dataWallets[0].totalMoney);
@@ -69,10 +72,9 @@ class WalletsController {
   }
   async deleteSetting(req, res, query) {
     let isLogin = CookieAndSession.checkingSession(req);
-    let data = "";
-    req.on("data", (chuck) => {
-      data += chuck;
-    });
+    Wallets.deleteWallet(query);
+    res.writeHead(301, { Location: "/" });
+    res.end();
   }
 }
 

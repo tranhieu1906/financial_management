@@ -72,12 +72,16 @@ function router(req, res, next) {
         WalletsController.detail(req, res, query.id);
         break;
       case `/setting?id=${query.id}`:
-        if(req.method === "GET"){
-          WalletsController.Setting(req, res,query);
-        }else{
-          WalletsController.updateSetting(req, res, query)
+        if (req.method === "GET") {
+          WalletsController.Setting(req, res, query);
+        } else {
+          WalletsController.updateSetting(req, res, query);
         }
         break;
+      case `/delete?id=${query.id}`:
+        WalletsController.deleteSetting(req, res, query.id);
+        break;
+      
       default:
         SiteController.ShowPageNotFound(req, res);
     }
