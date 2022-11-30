@@ -22,6 +22,7 @@ class SiteController {
                             </div>
                             <div class="col-8">
                                 <h4>${element.name}</h4>
+                                <p>Tiền mặt</p>
                                 <h5>${element.totalMoney}</h5>
                                 <a href="/detail?id=${element.id}">Detail</a>
                             </div>
