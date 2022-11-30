@@ -105,7 +105,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/change-info"><i class="fa-regular fa-user me-2"></i>Thay đổi
                         thông tin cá nhân</a></li>
-                <li><a class="dropdown-item" href="/changepass"><i class="fa-solid fa-lock me-2"></i>Thay đổi
+                <li><a class="dropdown-item" href="/changePass"><i class="fa-solid fa-lock me-2"></i>Thay đổi
                         mật khẩu</a></li>
                 <li><a class="dropdown-item" href="/logout"><i
                             class="fa-solid fa-arrow-right-from-bracket me-2"></i>Đăng xuất</a></li>
@@ -119,19 +119,6 @@
             <div class="container ">
                 <div class="row gap-4">
                     {listWallets}
-                    <!-- <div class="col shadow-sm p-3 mb-5 bg-body rounded">
-                        <div class="row">
-                            <div class="col-4 m-auto">
-                                <i class="fa-solid fa-wallet"></i>
-                            </div>
-                            <div class="col-8">
-                                <h4>{Name Wallet}</h4>
-                                <h5>{Cash}</h5>
-                                <a href="/detail">Detail</a>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="col shadow-sm p-3 mb-5 bg-body rounded">
                         <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -180,6 +167,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+        
 
     <script>
         $(document).ready(function () {

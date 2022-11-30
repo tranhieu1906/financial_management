@@ -1,7 +1,7 @@
 const url = require("url");
 const qs = require("qs");
 const fs = require("fs");
-const PATH = "D:\\MODULE_3\\case3\\MD3_case-3\\view";
+const PATH = "/Users/hoa/MD3-case/Case_demo/view";
 const SiteController = require("../controllers/Site.controller");
 const AuthController = require("../controllers/Auth.controller");
 const WalletsController = require("../controllers/Wallets.controller");
@@ -51,7 +51,7 @@ function router(req, res, next) {
           AuthController.RegisterController(req, res);
         }
         break;
-      case "/changepass":
+      case "/changePass":
         if (req.method === "GET") {
           SiteController.ChangePassword(req, res);
         } else {
@@ -69,7 +69,11 @@ function router(req, res, next) {
         WalletsController.createWallet(req, res);
         break;
       case `/detail?id=${query.id}`:
-        WalletsController.detail(req, res, query.id);
+        if (req.method === "GET") {
+          WalletsController.detail(req, res, query.id);
+        } else {
+          WalletsController.transaction(req, res, query.id);
+        }
         break;
       case `/setting?id=${query.id}`:
         if (req.method === "GET") {
@@ -81,7 +85,6 @@ function router(req, res, next) {
       case `/delete?id=${query.id}`:
         WalletsController.deleteSetting(req, res, query.id);
         break;
-      
       default:
         SiteController.ShowPageNotFound(req, res);
     }
