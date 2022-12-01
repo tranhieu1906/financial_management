@@ -36,6 +36,7 @@
             }
         }
     </style>
+
 </head>
 
 <body>
@@ -99,16 +100,22 @@
                                         <h4 class="mt-1 mb-5 pb-1">Tài chính Trần Hiếu</h4>
                                     </div>
 
-                                    <form action="/register" method="post">
+                                    <form onsubmit="submit_form()" action="/register" method="post">
                                         <p>Nhập tài khoản của bạn:</p>
 
                                         <div class="form-outline mb-4">
-                                            <input id="form2Example11" class="form-control" placeholder="Tên đăng nhập ... "
+                                            <input id="form2Example11" class="form-control"
+                                                   pattern=" 16"
+                                                placeholder="Số điện thoại đăng nhập..."
                                                 name="name" />
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="form2Example22" class="form-control"
+                                                <input type="password" id="form2Example22" class="form-control"
+                                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"
+                                                title="Phải chứa ít nhất một số, một chữ hoa,
+                                                        chữ thường và từ 6-8 ký tự"
+                                                   required
                                                 placeholder="Mật khẩu ... " name="password" />
                                         </div>
                                         <div class="form-outline mb-4">
@@ -169,5 +176,5 @@
         });
     });
 </script>
-
+<script src="js/register.js"></script>
 </html>

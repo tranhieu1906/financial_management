@@ -12,6 +12,11 @@ class AuthController {
     });
     req.on("end", async () => {
       let newData = qs.parse(data);
+
+
+
+
+      console.log(newData ,'newdata');
       let userData = await User.getListUsers();
       for (let i = 0; i < userData.length; i++) {
         if (
@@ -58,42 +63,36 @@ class AuthController {
     req.on("data", (chunk) => {
       data += chunk;
     });
-    req.on("end", () => {
-      let newData = qs.parse(data);
-      User.InsertUser(newData);
-      res.writeHead(301, { Location: "/" });
-      res.end();
-    });
-    req.on("error", (err) => {
-      console.log(err);
-    });
-  }
-  async ChangePassword(req, res) {
-    let data = "";
-    req.on("data", (chunk) => {
-      data += chunk;
-    });
     req.on("end", async () => {
-      let inputForm = qs.parse(data);
-      const idUser = await CookieAndSession.checkingSession(req)[0];
-      const oldPass = await User.CheckOldPassword(
-        `select count(userId) as count from User where userId=${idUser} and passwordUser=${inputForm.oldpassword}`
-      );
-      if (oldPass[0].count) {
-        let strQuery = "update User set ";
-        if (inputForm.password) {
-          strQuery += `passwordUser="${inputForm.password}" where userId=${idUser}`;
-        }
-        User.changePassword(strQuery);
-        res.statusCode = 302;
-        res.setHeader("Location", "/");
+      let newData = qs.parse(data);
+
+
+      console.log(newData ,'newdata')
+
+
+      async  function   validatecheck(_data){
+        const userCount = await User.CheckOldPassword(
+            `select * from User where nameUser=${_data.name}`
+
+        );
+
+        //Mai hoi tutor phan nay , khi ma query xuong db ma khong tim dcuser thì su li ntn
+        console.log(userCount ,'userCount');
+
+        return true
+      }
+  let check = await validatecheck(newData)
+      // check
+      if (check){
+        User.InsertUser(newData);
+        res.writeHead(301, { Location: "/" });
         res.end();
-      } else {
-        res.statusCode = 302;
-        res.setHeader("Location", "/changepass");
+      }else {
+        res.writeHead(500, { Location: "/" });
         res.end();
       }
     });
+
     req.on("error", (err) => {
       console.log(err);
     });
