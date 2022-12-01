@@ -15,10 +15,9 @@ class AuthController {
       let userData = await User.getListUsers();
       for (let i = 0; i < userData.length; i++) {
         if (
-          userData[i].nameUser == newData.name &&
+          userData[i].phone == newData.name &&
           userData[i].passwordUser == newData.password
         ) {
-          console.log(123)
           let dataSql = [
             userData[i].userId,
             userData[i].nameUser,

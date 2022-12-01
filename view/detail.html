@@ -88,7 +88,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/change-info"><i class="fa-regular fa-user me-2"></i>Thay đổi
                         thông tin cá nhân</a></li>
-                <li><a class="dropdown-item" href="/changepass"><i class="fa-solid fa-lock me-2"></i>Thay đổi
+                <li><a class="dropdown-item" href="/changePass"><i class="fa-solid fa-lock me-2"></i>Thay đổi
                         mật khẩu</a></li>
                 <li><a class="dropdown-item" href="/logout"><i
                             class="fa-solid fa-arrow-right-from-bracket me-2"></i>Đăng
@@ -111,12 +111,12 @@
                                 <div class="row">
                                     <div class="col">
 
-                                        <p>Danh mục chi tiêu</p>
+                                        <p>Danh mục</p>
                                         <div>
                                             <select class="form-select" aria-label=".form-select-lg example" id="select"
                                                 name="select1">
-                                                <option value="1">Chi</option>
-                                                <option value="2">Thu</option>
+                                                <option value="1">Chi Tiêu</option>
+                                                <option value="2">Thu nhập</option>
                                             </select>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                                         <input type="text" class="form-control" name="note">
                                     </div>
                                     <div class="col">
-                                        <p>Số tiền chi</p>
+                                        <p>Số tiền </p>
                                         <input type="text" class="form-control" name="amount">
                                     </div>
                                     <div class="col">
@@ -171,15 +171,15 @@
                 <div class="row gap-3">
                     <div class="col shadow-sm p-3 mb-5 bg-body rounded">
                         <p class="fw-bold">Số dư</p>
-                        <p>{1}</p>
+                        <p id="surplus">{1}</p>
                     </div>
                     <div class="col shadow-sm p-3 mb-5 bg-body rounded">
-                        <p class="fw-bold">Tổng chi phí trong tháng</p>
-                        <p>{2}</p>
+                        <p class="fw-bold">Tổng chi tiêu trong tháng</p>
+                        <p class="text-danger">{2}</p>
                     </div>
                     <div class="col shadow-sm p-3 mb-5 bg-body rounded">
                         <p class="fw-bold">Tổng thu nhập trong tháng</p>
-                        <p>{3}</p>
+                        <p class="text-success">{3}</p>
                     </div>
                 </div>
             </div>
@@ -187,20 +187,22 @@
         <div class="container shadow-sm p-3 mb-5 bg-body rounded">
             <div class="row py-2 mb-2" style="background-color:#f4f7fa">
                 <div class="col">
-                    <strong>{category}</strong>
+                    <strong>Giao dịch</strong>
                 </div>
                 <div class="col">
-                    {note}
+                    Ghi chú
                 </div>
-                <div class="col text-end">
-                    {money}
+                <div class="col">
+                    Thời gian
                 </div>
-                <div class="col text-end">
-                    <a href="{edit}">
-                        <button class="btn btn-danger ">Chỉnh sửa</button>
-                    </a>
+                <div class="col text-center">
+                    Số tiền
+                </div>
+                <div class="col-2 text-center">
+                    Thao tác
                 </div>
             </div>
+            {listTransaction}
         </div>
     </main>
     <footer>
@@ -224,7 +226,6 @@
         startDate.addEventListener('change', (e) => {
             let startDateVal = e.target.value
         })
-
         // const choseCategory = () => {
         //     let eCategory = document.getElementById('category').value;
         //     console.log (eCategory )
@@ -239,8 +240,7 @@
 
         //     })
         // }
-
-
+            
 
 
 

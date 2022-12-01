@@ -85,18 +85,6 @@
                 </svg>
             </div>
         </a>
-        <div class="d-flex">
-            <div class="me-4 ">
-                <a href="/dashboard">
-                    <p class="text-muted">Bảng điều khiển</p>
-                </a>
-            </div>
-            <div>
-                <a href="/budgets">
-                    <p class="text-muted">Ngân sách</p>
-                </a>
-            </div>
-        </div>
         <div class="dropdown">
             <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 160px;">
                 {user}
@@ -116,10 +104,13 @@
     <main>
         <div class="container">
             <h2 class="fw-bold">VÍ</h2>
+            <div class="mb-4">
+                <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Tạo ví mới</a>
+            </div>
             <div class="container ">
                 <div class="row gap-4">
                     {listWallets}
-                    <div class="col shadow-sm p-3 mb-5 bg-body rounded">
+                    <div class="col shadow-sm  my-5 bg-body rounded " style="height: 100%;">
                         <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                             <div class="modal-dialog modal-dialog-centered">
@@ -145,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Tạo ví mới</a>
+                        
 
                         <!-- <a href="/add-wallet">
                                     <p class="text-center text-success">Add New Wallet</p>

@@ -30,7 +30,6 @@ function router(req, res, next) {
     res.writeHead(200, { "Content-Type": extension });
     fs.createReadStream(PATH + req.url).pipe(res);
   } else {
-    console.log();
     switch (path) {
       case "/":
         SiteController.showHomePage(req, res);
@@ -84,6 +83,26 @@ function router(req, res, next) {
         break;
       case `/delete?id=${query.id}`:
         WalletsController.deleteSetting(req, res, query.id);
+        break;
+      case `/detail/edit?id=${query.id}&id_wallets=${query.id_wallets}`:
+        if (req.method === "GET") {
+          WalletsController.ShowEditTransaction(req, res, query.id);
+        } else {
+          WalletsController.EditTransaction(
+            req,
+            res,
+            query.id,
+            query.id_wallets
+          );
+        }
+        break;
+      case `/detail/delete?id=${query.id}&id_wallets=${query.id_wallets}`:
+        WalletsController.DeleteTransaction(
+          req,
+          res,
+          query.id,
+          query.id_wallets
+        );
         break;
       default:
         SiteController.ShowPageNotFound(req, res);

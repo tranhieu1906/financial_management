@@ -33,3 +33,22 @@ create table Category(
     id int not null auto_increment primary key,
     name varchar(255)
 )
+
+
+
+
+
+
+<div class="col shadow-sm p-3 mb-5 bg-body rounded">
+                        <div class="row">
+                            <div class="col-4 m-auto">
+                              <img src="https://cdn0.iconfinder.com/data/icons/essential-pack-4/512/8-2-256.png" class="img-fluid rounded-circle">
+                            </div>
+                            <div class="col-8">
+                                <h4>${element.name}</h4>
+                                <p>Tiền mặt</p>
+                                <h5>${element.totalMoney}</h5>
+                                <a href="/detail?id=${element.id}">Detail</a>
+                            </div>
+                        </div>
+                    </div>
