@@ -42,7 +42,7 @@ class User {
         return result;
       })
       .catch((err) => {
-        throw err;
+        err.response.status(404).send({ status: 404, message: "User not found." });
       });
   }
   async UpdateUser(data, id) {
